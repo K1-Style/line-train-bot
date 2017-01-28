@@ -33,7 +33,7 @@ node.jsを利用したローカル開発やテストを実際に試してみた�
 GitHubにソースコードを上げました。  
 https://github.com/K1-Style/line-train-bot
 
-## LINE Developerアカウント用意
+### LINE Developerアカウント用意
 以下の記事をかなり参考にさせていただきました。  
 [Serverless FrameworkでLINE BOTが簡単にできちゃった](http://qiita.com/narikei/items/8c6cd9e05621dcd444e5)
 
