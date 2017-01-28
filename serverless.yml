@@ -1,0 +1,27 @@
+# 前提：以下の環境変数を開発環境に定義していること
+# LINE_ACCESS_TOKEN : LINE BOT用のアクセストークン
+# LINE_CHANNEL_SECRET : LINE BOTのCHANNEL SECRET（リクエストの送信元チェックで利用）
+# AWS_PROFILE : 使用するAWS環境のcredencial profile名。デフォルトを利用する場合はprofileの定義は無くて良いです。
+
+service: trainbot
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: dev
+  region: ap-northeast-1
+  profile: ${env:AWS_PROFILE} #awsデフォルトのプロファイルを利用する場合は、当行不要
+  environment:
+    LINE_ACCESS_TOKEN: ${env:LINE_ACCESS_TOKEN}
+    LINE_CHANNEL_SECRET: ${env:LINE_CHANNEL_SECRET}
+
+plugins:
+  - serverless-offline
+
+functions:
+  lineWebhook:
+    handler: line.webhook
+    events:
+      - http:
+          path: line/webhook
+          method: post
